@@ -38,12 +38,7 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public void updateProduct(ProductForm form) {
-        Product product = Product.builder()
-                .description(form.getDescription())
-                .price(form.getPrice())
-                .amount(form.getAmount())
-                .build();
-        productsRepository.save(product);
+    public void updateProduct(Integer productId) {
+     return;
     }
 }

@@ -17,6 +17,10 @@
     <label><@spring.message 'products.form.input.price'/>
         <input name="price" placeholder="<@spring.message 'products.form.input.price'/>">
     </label>
+    <label><@spring.message 'products.form.input.amount'/>
+        <input name="amount" placeholder="<@spring.message 'products.form.input.amount'/>">
+    </label>
+    <input type="submit" value="<@spring.message 'products.form.input.submit'/>">
 </form>
 <table>
     <tr>
@@ -34,14 +38,12 @@
             <td>${product.amount}</td>
             <td>
                 <form method="post" action="/products/${product.id}/delete">
+                    <input type="submit" value="Удалить">
                 </form>
                 <a href="/products/${product.id}">Перейти</a>
             </td>
         </tr>
     </#list>
 </table>
-
 </body>
 </html>
-
-

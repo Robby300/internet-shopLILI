@@ -15,5 +15,5 @@ public interface ProductsService {
 
     Product getProduct(Integer productId);
 
-    void updateProduct(ProductForm form);
+    void updateProduct(Integer productId);
 }

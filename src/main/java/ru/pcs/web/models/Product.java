@@ -1,18 +1,13 @@
 package ru.pcs.web.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "product")
 public class Product {
 
     @Id
@@ -22,4 +17,5 @@ public class Product {
     private String description;
     private Double price;
     private Integer amount;
+
 }

@@ -22,7 +22,6 @@ public class Consumer {
 
     private String name;
 
-//    @JsonIgnore
 //    @OneToMany(mappedBy = "consumer")
 //    private List<Order> orders;
 

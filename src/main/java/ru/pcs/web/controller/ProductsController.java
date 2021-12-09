@@ -10,6 +10,7 @@ import ru.pcs.web.forms.ProductForm;
 import ru.pcs.web.models.Product;
 import ru.pcs.web.services.ProductsService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -28,33 +29,29 @@ public class ProductsController {
         List<Product> products = productsService.getAllProducts();
         model.addAttribute("products", products);
         return "products";
-    };
+    }
 
-    @PostMapping("/product")
+
+    @PostMapping("/products")
     public String addProduct(ProductForm form) {
         productsService.addProduct(form);
-        return "redirect:/products";
-    };
+        return "redirect:/product";
+    }
 
-    @PostMapping("/products/{product-id}/delete")
-        public String deleteProduct(@PathVariable("product-id") Integer productId) {
+    @PostMapping("/products/{id}/delete")
+        public String deleteProduct(@PathVariable("id") Integer productId) {
         productsService.deleteProduct(productId);
         return "redirect:/products";
-        };
+        }
 
 
-//    @GetMapping("/products/{product-id}")
-//    public String getProductPage(Model model, @PathVariable("product-id") Integer productId) {
-//        Product product = productService.getProduct(productId);
-//        model.addAttribute("product", product);
-//        return "product";
+    @GetMapping("/products/{id}")
+    public String getProductPage(Model model, @PathVariable("id") Integer productId) {
+        Product product = productsService.getProduct(productId);
+        model.addAttribute("product", product);
+        return "product";
 
-//    };
-//    @PostMapping("/products/{product-id}/update")
-//    public String updateProduct(ProductForm form, @PathVariable("product-id") String parameter) {
-//        productService.updateProduct(form);
-//        return "redirect:/products";
-//    };
+    }
 
 
 }
