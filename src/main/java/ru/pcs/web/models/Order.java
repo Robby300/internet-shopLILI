@@ -1,34 +1,40 @@
 package ru.pcs.web.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-@Data
+@Entity
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Table(name="\"order\"")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public Order(List<Product> products) {
+    /*public Order(List<Product> products) {
         this.products = products;
-    }
+    }*/
 
-    @OneToMany(mappedBy = "product")
+    @ManyToMany
+    @JoinTable(
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
     private List<Product> products;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
 //
 //    @Column(name="created_dt")
@@ -47,11 +53,7 @@ public class Order {
 //    public Map<Product, Integer> getProduct() {
 //        return Collections.unmodifiableMap(products);
 //    }
-//
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-//
+
 //    public void deleteProduct(Product product) {
 //        products.computeIfPresent(product, (k, v) -> v > 1 ? v - 1 : null);
 //    }
@@ -72,6 +74,10 @@ public class Order {
 
     public Integer getId() {
         return id;
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
 //    public LocalDateTime getCreatedDt() {
