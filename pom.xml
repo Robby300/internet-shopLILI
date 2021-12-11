@@ -9,13 +9,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.pcs.web</groupId>
-    <artifactId>spring-boot-web</artifactId>
+    <artifactId>my-internet-shop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>27. Spring Boot</name>
-    <description>27. Spring Boot</description>
+    <name>my-internet-shop</name>
+    <description>my-internet-shop</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -24,6 +25,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

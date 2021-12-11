@@ -11,6 +11,7 @@
 <body>
 <h1>Добавление товара</h1>
 <form method="post" action="/products">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <label><@spring.message 'products.form.input.description'/>:
         <input name="description" placeholder="<@spring.message 'products.form.input.description'/>">
     </label>
@@ -38,6 +39,7 @@
             <td>${product.amount}</td>
             <td>
                 <form method="post" action="/products/${product.id}/delete">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <input type="submit" value="Удалить">
                 </form>
                 <a href="/products/${product.id}">Перейти</a>
